@@ -1,12 +1,12 @@
 [project]
 name = "pyquantumclifford"
-version = "0.1.0"
-description = "Thin Python wrapper for the Julia library QuantumClifford.jl and QuantumClifford.ECC"
+version = "0.10.1"
+description = "Thin Python wrapper for the Julia library QuantumClifford.jl and QuantumClifford.ECC. Supports extremely fast Stabilizer state simulations, weakly non-Clifford dynamics, and generation of many modern quantum error correcting codes."
 readme = "README.md"
 authors = [
     { name = "Stefan Krastanov", email = "stefan@krastanov.org" }
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "juliacall>=0.9.27",
     "juliapkg>=0.1.13",

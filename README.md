@@ -1,6 +1,23 @@
 # pyquantumclifford
 
-Thin Python wrapper for `QuantumClifford.jl` and `QuantumClifford.ECC` using the JuliaPy stack.
+Thin Python wrapper for [`QuantumClifford.jl`](https://qc.quantumsavory.org/stable/) and [`QuantumClifford.ECC`](https://qc.quantumsavory.org/stable/ECC_API/) using the JuliaPy stack.
+Supports extremely fast Stabilizer state simulations, weakly non-Clifford dynamics, and generation of many modern quantum error correcting codes.
+
+## Instalation
+
+```
+pip install pyquantumclifford
+```
+
+or
+
+```
+uv add pyquantumclifford
+```
+
+On first `import` the Julia runtime will be downloaded and QuantumClifford.jl will be compiled (optimized for your hardware). This is a slow process, might take around 5 minutes.
+
+Optional: Having [`juliaup`](https://github.com/JuliaLang/juliaup) installed in your system (and available in your PATH) makes managing Julia versions much simpler behind the scenes. Consider manually installing `juliaup` before installing `pyquantumclifford`. The install command is `curl -fsSL https://install.julialang.org | sh` for a selfcontained install in `~/.julia` that you can delete at any time.
 
 ## Usage
 
@@ -8,15 +25,8 @@ Thin Python wrapper for `QuantumClifford.jl` and `QuantumClifford.ECC` using the
 import numpy as np
 from pyquantumclifford import QuantumClifford, ECC
 
-# Create an empty tableau and stabilizer
+# Optional, for calling arbitrary Julia code
 from juliacall import Main as jl
-
-empty_tab = QuantumClifford.Tableau(
-    jl.zeros(jl.UInt8, 0),
-    0,
-    jl.zeros(jl.UInt8, 0, 0),
-)
-stabilizer = QuantumClifford.Stabilizer(empty_tab)
 
 # Simple ECC code
 code = ECC.Shor9()
@@ -29,5 +39,5 @@ np.array(ECC.parity_matrix(ECC.Shor9()))
 
 ## Notes
 
-- Julia dependencies are declared in `juliapkg.json` and installed by JuliaPkg.
+- Windows is not supported due to the Oscar computer algebra system being unavailable on it. Use WSL on Windows.
 - `juliacall` provides access to Julia modules from Python.
