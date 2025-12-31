@@ -1,6 +1,6 @@
 [project]
 name = "pyquantumclifford"
-version = "0.1.0"
+version = "0.10.1"
 description = "Thin Python wrapper for the Julia library QuantumClifford.jl and QuantumClifford.ECC. Supports extremely fast Stabilizer state simulations, weakly non-Clifford dynamics, and generation of many modern quantum error correcting codes."
 readme = "README.md"
 authors = [
